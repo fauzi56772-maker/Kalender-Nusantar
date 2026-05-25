@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kalender Nusantara - Aplikasi Kalender Masehi, Hijriyah, dan Jawa yang modern dan interaktif.">
+    <title>Kalender Nusantara</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="batik-overlay"></div>
+    
+    <header class="glass-panel">
+        <div class="logo">
+            <i class="fa-solid fa-calendar-days"></i>
+            <h1>Kalender Nusantara</h1>
+        </div>
+        <div class="header-right">
+            <div id="realtime-clock" class="clock">00:00:00</div>
+            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar glass-panel">
+            <div class="widget date-detail">
+                <h2 id="detail-masehi">1 Januari 2026</h2>
+                <p id="detail-hijriyah" class="text-gold">1 Rajab 1447 H</p>
+                <div class="jawa-box">
+                    <span id="detail-jawa">Senin Pahing</span>
+                    <span id="detail-wuku">Wuku: Sinta</span>
+                    <span id="detail-neptu">Neptu: 13</span>
+                </div>
+            </div>
+
+            <div class="widget quote-widget">
+                <h3><i class="fa-solid fa-feather-pointed"></i> Pepatah Hari Ini</h3>
+                <blockquote id="daily-quote">"Becik ketitik, ala ketara."</blockquote>
+            </div>
+
+            <div class="widget notes-widget">
+                <h3><i class="fa-solid fa-note-sticky"></i> Catatan <span id="note-date-label"></span></h3>
+                <textarea id="note-input" placeholder="Tulis pengingat di sini..."></textarea>
+                <button id="save-note" class="btn-primary">Simpan Catatan</button>
+            </div>
+        </aside>
+
+        <section class="calendar-wrapper glass-panel">
+            <div class="calendar-header">
+                <button id="prev-month" class="btn-icon"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="month-title">
+                    <h2 id="month-year-display">Januari 2026</h2>
+                </div>
+                <div class="calendar-controls">
+                    <button id="btn-today" class="btn-outline">Hari Ini</button>
+                    <button id="next-month" class="btn-icon"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="calendar-grid">
+                <div class="day-name libur">Min</div>
+                <div class="day-name">Sen</div>
+                <div class="day-name">Sel</div>
+                <div class="day-name">Rab</div>
+                <div class="day-name">Kam</div>
+                <div class="day-name">Jum</div>
+                <div class="day-name">Sab</div>
+                
+                <div id="calendar-body" class="calendar-dates"></div>
+            </div>
+            
+            <div class="legend">
+                <span class="badge libur-badge">Hari Libur</span>
+                <span class="badge event-badge">Event/Hari Besar</span>
+                <span class="badge today-badge">Hari Ini</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-panel">
+        <p>&copy; 2026 Kalender Nusantara. Menggabungkan Teknologi & Tradisi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
