@@ -76,7 +76,33 @@ function getJawaDetail(date) {
 }
 
 // Format Hijriyah
+function // Format Hijriyah (Diperbaiki)
 function getHijriyahFormat(date) {
+    // Gunakan en-US agar browser memberikan angka murni yang tidak salah diterjemahkan
+    const formatter = new Intl.DateTimeFormat('en-US-u-ca-islamic', {
+        day: 'numeric', month: 'numeric', year: 'numeric'
+    });
+    
+    const parts = formatter.formatToParts(date);
+    let hDay, hMonth, hYear;
+
+    parts.forEach(part => {
+        if (part.type === 'day') hDay = part.value;
+        if (part.type === 'month') hMonth = parseInt(part.value, 10) - 1; // Dikurangi 1 untuk index array (0-11)
+        if (part.type === 'year') hYear = parseInt(part.value, 10); // Parse agar teks ekstra seperti 'AH' hilang
+    });
+
+    // Array nama bulan Hijriyah standar Indonesia
+    const bulanHijriyah = [
+        "Muharram", "Safar", "Rabiul Awal", "Rabiul Akhir", 
+        "Jumadil Awal", "Jumadil Akhir", "Rajab", "Sya'ban", 
+        "Ramadhan", "Syawal", "Dzulqa'dah", "Dzulhijjah"
+    ];
+
+    // Hasil format: "9 Dzulhijjah 1447 H"
+    return `${hDay} ${bulanHijriyah[hMonth]} ${hYear} H`;
+}
+ {
     return new Intl.DateTimeFormat('id-u-ca-islamic', {
         day: 'numeric', month: 'long', year: 'numeric'
     }).format(date);
